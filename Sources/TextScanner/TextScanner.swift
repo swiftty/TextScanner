@@ -25,7 +25,7 @@ public struct TextScanner {
     public var isAtEnd: Bool { storage.isAtEnd }
 
     public init(_ input: String) {
-        fatalError()
+        storage = StringReaderStorage(input)
     }
 
     public init(fileURL: URL, encoding: String.Encoding = .utf8, chunkSize: Int = 4096) throws {
@@ -50,7 +50,7 @@ public struct TextScanner {
         var isAtEnd: Bool { fatalError() }
 
         func peek() -> Character? { fatalError() }
-        func next(where cond: (Character) -> Bool = { _ in true }) -> Character? { fatalError() }
+        func next(where cond: (Character) -> Bool) -> Character? { fatalError() }
 
         func copy() -> Self { fatalError() }
     }
