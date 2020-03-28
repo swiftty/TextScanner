@@ -29,7 +29,7 @@ public struct TextScanner {
     }
 
     public init(fileURL: URL, encoding: String.Encoding = .utf8, chunkSize: Int = 4096) throws {
-        fatalError()
+        storage = try StreamReaderStorage(fileURL: fileURL, encoding: encoding, chunkSize: chunkSize)
     }
 
     public func peek() -> Character? {

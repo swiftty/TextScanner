@@ -11,17 +11,17 @@ final class StringReaderStorage: TextScanner.Storage {
     private var _offsetIndex: String.Index
     private var offsetIndex: String.Index? { isAtEnd ? nil : _offsetIndex }
 
+    init(_ input: String, fileURL: URL? = nil) {
+        self.input = input
+        _meta = .init(fileURL: fileURL)
+        _offsetIndex = input.startIndex
+    }
+
     private init(_ storage: StringReaderStorage) {
         _meta = storage.meta
         _loc = storage.loc
         input = storage.input
         _offsetIndex = storage._offsetIndex
-    }
-
-    init(_ input: String, fileURL: URL? = nil) {
-        self.input = input
-        _meta = .init(fileURL: fileURL)
-        _offsetIndex = input.startIndex
     }
 
     override func peek() -> Character? {
