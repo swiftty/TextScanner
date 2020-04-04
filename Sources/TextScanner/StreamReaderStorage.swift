@@ -1,5 +1,11 @@
 import Foundation
 
+#if !canImport(ObjectiveC)
+func autoreleasepool<Result>(invoking body: () throws -> Result) rethrows -> Result {
+    try body()
+}
+#endif
+
 private extension TextScanner {
     static let empty = TextScanner("")
 }
